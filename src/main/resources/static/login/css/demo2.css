@@ -1,0 +1,18 @@
+body {
+    --color-text: #0f070a;
+    --color-bg: #fff;
+    --color-bg-2: #ecc7d5;
+    --color-link: #4062bb;
+    --color-link-hover: #52489c;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 800px);
+    background: radial-gradient(ellipse at 75% 0, var(--color-bg) 50%, var(--color-bg-2) 250%);
+    z-index: -2;
+    transform: translateY(-800px)
+}

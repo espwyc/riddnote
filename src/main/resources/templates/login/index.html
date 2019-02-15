@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" mdcontent="IE=edge,chrome=1">
+    <meta name="viewport" mdcontent="width=device-width, initial-scale=1.0">
+    <title>my login</title>
+    <!--<script>-->
+    <!--document.documentElement.className = "js";-->
+    <!--var supportsCssVars = function () {-->
+    <!--var e, t = document.createElement("style");-->
+    <!--return t.innerHTML = "root: { &#45;&#45;tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports &&-->
+    <!--window.CSS.supports("font-weight", "var(&#45;&#45;tmp-var)")), t.parentNode.removeChild(t), e-->
+    <!--};-->
+    <!--supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");-->
+    <!--</script>-->
+
+    <!--<link th:href="@{/login/css/index.css}" rel="stylesheet">-->
+
+    <link th:if="${rdm} eq '0'" th:href="@{/login/css/index.css}" rel="stylesheet">
+    <link th:if="${rdm} eq '1'" th:href="@{/login/css/demo2.css}" rel="stylesheet">
+    <!--<link th:if="${rdm} eq '2'" th:href="@{/login/css/demo3.css}" rel="stylesheet">-->
+    <link th:if="${rdm} eq '2'" th:href="@{/login/css/demo4.css}" rel="stylesheet">
+    <link th:if="${rdm} eq '3'" th:href="@{/login/css/demo5.css}" rel="stylesheet">
+    <link th:href="@{/login/css/vendors.css}" rel="stylesheet">
+    <!--登陆框link-->
+    <link th:href="@{//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/login/css/style.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.css}" rel="stylesheet" />
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!--<script type="text/javascript" th:src="@{/waterfall/js/jquery-1.8.3.min.js}"></script>-->
+    <!-- 登陆style -->
+    <style type="text/css">
+        .panel-shadow {
+            -moz-box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
+            -webkit-box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
+            box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
+        }
+
+        .bg-overlay {
+            -moz-border-radius: 6px 6px 0 0;
+            -webkit-border-radius: 6px 6px 0 0;
+            background-color: rgba(47, 51, 62, 0.3);
+            border-radius: 6px 6px 0 0;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .input-border {
+            b1.png font-size: 14px;
+            width: 100%;
+            height: 40px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid #dadada;
+        }
+
+        .bg-img>h3 {
+            text-shadow: 0px 2px 3px #555;
+            color: #cac9c8;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="background"></div>
+<div class="overlay"  ></div>
+<main >
+    <div class="frame">
+        <div class="frame__title-wrap">
+            <h1 class="frame__title" id="testhh" style="color: white">riddnote</h1>
+        </div>
+        <!-- <a class="frame__github" href="https://github.com/Jeremboo/animated-mesh-lines" target="_blank">GitHub</a> -->
+        <div class="frame__links">
+            <a id="lginlin" style="color: white; cursor: pointer">点击登陆</a>
+            <!--<a href="http://www.htmleaf.com/">jQuery之家</a> &ndash;&gt;-->
+        </div>
+        <!-- <div class="frame__demos">
+                <a href="index.html" class="frame__demo frame__demo--current">demo 1</a>
+                <a href="demo2.html" class="frame__demo">demo 2</a>
+                <a href="demo3.html" class="frame__demo">demo 3</a>
+                <a href="demo4.html" class="frame__demo">demo 4</a>
+                <a href="demo5.html" class="frame__demo">demo 5</a>
+            </div> -->
+    </div>
+    <!--登陆框-->
+    <div id="loginpannel" style="margin: 0 auto; padding-bottom: 0%; padding-top: 7.5%; width: 380px;">
+        <div class="panel panel-color panel-danger panel-pages panel-shadow" style="opacity: 50%">
+            <div class="panel-heading bg-img">
+                <div class="bg-overlay"></div>
+                <h3 class="text-center m-t-10"> Login </h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal m-t-20" onsubmit="return false" action="##" method="post" id="loginForm">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class=" input-lg input-border" name="username" type="text" required=""
+                                   placeholder="账号:" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class=" input-lg input-border" name="password" type="password" required=""
+                                   placeholder="密码:" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="checkbox checkbox-danger">
+                                <input id="checkbox-signup" name="remeber_me" type="checkbox" />
+                                <label for="checkbox-signup">记住我</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-40">
+                        <div class="col-xs-12">
+                            <button class="btn btn-danger btn-lg btn-rounded btn-block w-lg waves-effect waves-light" style="box-shadow: 0px 0px 4px #868282;" onclick="DoLogin()">登&nbsp;录
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--<div style="width: 100%; height: 100%" id="mainframe" ></div>-->
+</main>
+
+
+<script type="text/javascript" th:if="${rdm} eq '0'" th:src="@{/login/js/index.js}"></script>
+<script type="text/javascript" th:if="${rdm} eq '1'" th:src="@{/login/js/demo2.js}"></script>
+<!--<script type="text/javascript" th:if="${rdm} eq '2'" th:src="@{/login/js/demo3.js}"></script>-->
+<script type="text/javascript" th:if="${rdm} eq '2'" th:src="@{/login/js/demo4.js}"></script>
+<script type="text/javascript" th:if="${rdm} eq '3'" th:src="@{/login/js/demo5.js}"></script>
+
+<!--<script type="text/javascript" th:src="@{/login/js/index.js}"></script>-->
+<script type="text/javascript" th:src="@{/login/js/vendors.js}"></script>
+
+<script>
+    var lo = document.getElementById('lginlin');
+    lo.onclick = function () {
+        document.getElementById('loginpannel').style.display = 'block';
+    }
+</script>
+
+<script>
+    function DoLogin() {
+        //alert("ajax");
+        $.ajax({
+            type:"POST",
+            dataType:"json",
+            url:"/login",
+            data:$('#loginForm').serialize(),
+            success:function (result) {
+                if(result!=null&&result.res=="ok")
+                {
+                    //alert(result.res);
+                    window.location.href=result.url;
+                }
+                else
+                {
+                    alert(result.msg);
+                }
+            }
+        });
+    }
+
+</script>
+
+<!--<script>-->
+    <!--var mainf = document.getElementById('mainframe');-->
+    <!--mainf.onclick=function ()-->
+    <!--{-->
+        <!--document.getElementById('loginpannel').style.display = 'none';-->
+    <!--}-->
+<!--</script>-->
+
+<!--<script type="text/javascript">-->
+<!--var st = document.getElementById('style');-->
+<!--var bsc=document.getElementById('bsc');-->
+<!--var rdm =Math.floor(Math.random()*4);-->
+
+<!---->
+
+<!--switch(rdm)-->
+<!--{-->
+<!--case 0 : st.setAttribute('href','css/demo2.css'); bsc.setAttribute('src','js/demo2.js'); break;-->
+<!--case 1 : st.setAttribute('href','css/demo3.css'); bsc.setAttribute('src','js/demo3.js'); break;-->
+<!--case 2 : st.setAttribute('href','css/demo4.css'); bsc.setAttribute('src','js/demo4.js'); break;-->
+<!--case 3 : st.setAttribute('href','css/demo5.css'); bsc.setAttribute('src','js/demo5.js'); break;-->
+<!--}-->
+<!--</script>-->
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" mdcontent="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>My title</title>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-80520768-3');
+    </script>
+    <!--Google Fonts-->
+    <link th:href="@{/sidebar/css/gfont.css}" rel="stylesheet" />
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--Material Design Iconic Font-->
+    <link rel="stylesheet" th:href="@{/sidebar/material-design/css/material-design-iconic-font.css}" />
+
+    <!--jSide Menu Plugin-->
+    <script th:src="@{/sidebar/js/jquery.jside.menu.js}"></script>
+    <!--jSide Menu CSS-->
+    <link rel="stylesheet" th:href="@{/sidebar/css/jside-menu.css}" />
+    <!--jSide Skins-->
+    <link rel="stylesheet" th:href="@{/sidebar/css/jside-skins.css}" />
+
+    <link rel="stylesheet" th:href="@{/editor/exp/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/editor/css/editormd.css}"/>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+
+    <script>
+        $(document).ready(function(){
+
+            $(".menu-container").jSideMenu({
+                jSidePosition: "position-left", //possible options position-left or position-right
+
+                jSideSticky: true, // menubar will be fixed on top, false to set static
+
+                jSideSkin: "default-skin", // to apply custom skin, just put its name in this string
+            });
+        });
+    </script>
+
+</head>
+<body >
+<div id="layout" >
+
+<div class="endless-river menu-head position-left" >
+   <span class="layer">
+<div class="col">
+  <div class="row for-pic">
+   <div class="profile-pic">
+   <img th:src="@{/sidebar/image/asif-mughal.jpg}" alt="Asif Mughal" />
+         </div>
+  </div>
+         <div class="row for-name">
+   <h3 title="User Name"> Asif Mughal </h3>
+        <span class="tagline"> Tagline text goes here</span>
+          </div>
+         </div> <!--//col-->
+  </span>
+</div> <!--//menu-head-->
+
+<nav class="endless-river menu-container position-left">
+
+    <ul class="menu-items">
+        <li><span class="item-icon"><i class="zmdi zmdi-android"></i></span> <a href="#1">
+            Main item one </a></li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-apple"></i> </span> <a href="#1">
+            Main item two </a></li>
+
+        <li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-windows"></i> </span>
+            <span class="dropdown-heading">
+ Item three with dropdown </span>
+            <ul>
+                <li> <a href="#2">dropdown sub item 1 </a> </li>
+                <li> <a href="#2"> dropdown sub item 2 </a> </li>
+                <li> <a href="#2"> dropdown sub item 3 </a> </li>
+                <li> <a href="#2"> dropdown sub item 4 </a> </li>
+                <li> <a href="#2"> dropdown sub item 5 </a> </li>
+                <li> <a href="#2"> dropdown sub item 6 </a> </li>
+                <li> <a href="#2"> dropdown sub item 7 </a> </li>
+            </ul>
+        </li>
+        <li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-devices"></i> </span>
+            <span class="dropdown-heading">
+
+ Item four with dropdown </span>
+            <ul>
+                <li> <a href="#2">sub item 1 </a> </li>
+                <li> <a href="#2">sub item 2 </a> </li>
+                <li> <a href="#2">sub item 3 </a> </li>
+                <li> <a href="#2">sub item 4 </a> </li>
+            </ul>
+        </li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-keyboard"></i> </span> <a href="#1">
+            Main item four </a></li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-dock"></i> </span> <a href="#1">
+            Main item five </a></li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-mouse"></i> </span> <a href="#1">
+            Main item five </a></li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-tv"></i> </span> <a href="#1">
+            Main item six </a></li>
+
+    </ul>
+
+</nav>
+
+
+<!--<div class="dim-overlay"></div>-->
+
+<!--End jSide Menu-->
+
+
+
+
+<!--Introduction and Demo Only -->
+<header >
+    <menu class="endless-river menubar">
+        <menuitem>
+            <button class="menu-trigger"> </button>
+        </menuitem>
+
+        <menuitem class="logo" title="Your Logo Goes Here">
+            <a href="#1"><img th:src="@{/sidebar/image/jside-menu.png}" alt="jSide Menu" /> </a>
+        </menuitem>
+    </menu>
+
+</header>
+
+<main style="width: 100%;height: auto">
+    <div id="test-editormd" >
+                <textarea style="display:none;">[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            ...
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+</textarea>
+    </div>
+
+</main >
+<footer class="credit" style="margin-top: 0px; bottom: 0px;left: 0px;width: 100%">
+    Coded with repl by richard wong &copy; 2019 - <a href="https://www.codehim.com" rel="dofollow" title="Awesome Web Projects and Tutorials" target="_blank"> Codehim.com </a>
+</footer>
+
+
+</div>
+
+
+<!--DEMO ONLY FILES-->
+<!--Demo CSS-->
+<link rel="stylesheet" th:href="@{/sidebar/docs/demo-only.css}" />
+<script th:src="@{/sidebar/docs/demo-only.js}"></script>
+<!--<script th:src="@{/editor/exp/js/jquery.min.js}"></script>-->
+<script th:src="@{/editor/editormd.min.js}"></script>
+<script type="text/javascript">
+
+
+    var testEditor;
+
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "100%",
+            height: 890,
+            syncScrolling: "single",
+            path: "../lib/",
+            onload: function () {
+                // this.watch().fullscreen();
+            }
+
+        });
+
+        /*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+    });
+</script>
+
+</body>
+</html>
