@@ -474,7 +474,7 @@
                     var imgsrc="/waterfall/images/"+tmp.toString()+".jpg";
                     tmp++;
 
-                    html+="<li class='item'><a href='#' class='a-img'><img src='"+imgsrc.toString()+"'></a>";
+                    html+="<li onclick='DoEdit(this)' uid='"+sqlJson[i].uid+"' class='item'><a href='#' class='a-img'><img src='"+imgsrc.toString()+"'></a>";
                     html+="<h2 style='color: black' class='li-title'>"+sqlJson[i].title+"</h2>";
                     html+="<p class='description'>"+sqlJson[i].intro+"</p><div class='qianm clearfloat'>";
                     html+="<span class='sp1'><b>"+sqlJson[i].opencount+"</b>次打开</span>";
@@ -567,6 +567,29 @@
         });
 
     })
+</script>
+<script>
+    function DoEdit(obj)
+    {
+        var uid=obj.getAttribute("uid");
+        var form = document.createElement("form");
+        // 设置form属性
+        form .action = "/edit";
+        form .target = "_self";
+        form .method = "post";
+        form .style.display = "none";
+
+        var input=document.createElement("input");
+        input.type="text";
+        input.name="uid";
+        input.value=uid;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+        // 提交表单
+        form .submit();
+    }
 </script>
 
 </body>

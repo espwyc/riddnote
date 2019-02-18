@@ -137,38 +137,7 @@
 
 <main style="width: 100%;height: auto">
     <div id="test-editormd" >
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
+                <textarea style="display:none;" th:text="${Mdc.content}">text
 </textarea>
     </div>
 
@@ -187,10 +156,11 @@
 <script th:src="@{/sidebar/docs/demo-only.js}"></script>
 <!--<script th:src="@{/editor/exp/js/jquery.min.js}"></script>-->
 <script th:src="@{/editor/editormd.min.js}"></script>
-<script type="text/javascript">
+<script th:inline="javascript">
 
 
     var testEditor;
+    var mdcontent=/*[[${Mdc.content}]]*/ '# Hello World!';
 
     $(function () {
         testEditor = editormd("test-editormd", {
@@ -200,6 +170,7 @@
             path: "../lib/",
             onload: function () {
                 // this.watch().fullscreen();
+                this.setMarkdown(mdcontent);
             }
 
         });

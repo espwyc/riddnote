@@ -78,4 +78,17 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
 
         return markdownBos;
     }
+
+    @Override
+    public MarkdownBo GetMarkdown(String uid) {
+
+        Markdown markdown = markdownsRepository.findByUid(uid);
+
+        MarkdownBo markdownBo = new MarkdownBo();
+        markdownBo.setUsernickname(markdown.getOwner().getNickname());
+        markdownBo.setTitle(markdown.getTitle());
+        markdownBo.setContent(markdown.getContent().getMdcontent());
+
+        return  markdownBo;
+    }
 }
