@@ -52,12 +52,12 @@
 <div class="col">
   <div class="row for-pic">
    <div class="profile-pic">
-   <img th:src="@{/sidebar/image/asif-mughal.jpg}" alt="Asif Mughal" />
+   <img th:src="@{/sidebar/image/tmp.jpg}" alt="Asif Mughal" />
          </div>
   </div>
          <div class="row for-name">
-   <h3 title="User Name"> Asif Mughal </h3>
-        <span class="tagline"> Tagline text goes here</span>
+   <h3 title="User Name" th:text="${userinfo.nickname}"> nichname</h3>
+        <span class="tagline" th:text="${userinfo.intro}">intro</span>
           </div>
          </div> <!--//col-->
   </span>
@@ -66,49 +66,53 @@
 <nav class="endless-river menu-container position-left">
 
     <ul class="menu-items">
-        <li><span class="item-icon"><i class="zmdi zmdi-android"></i></span> <a href="#1">
-            Main item one </a></li>
+        <!--<li><span class="item-icon"><i class="zmdi zmdi-android"></i></span> <a href="#1">-->
+            <!--Main item one </a></li>-->
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-apple"></i> </span> <a href="#1">
-            Main item two </a></li>
+        <!--<li> <span class="item-icon"> <i class="zmdi zmdi-apple"></i> </span> <a href="#1">-->
+            <!--Main item two </a></li>-->
 
-        <li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-windows"></i> </span>
-            <span class="dropdown-heading">
- Item three with dropdown </span>
-            <ul>
-                <li> <a href="#2">dropdown sub item 1 </a> </li>
-                <li> <a href="#2"> dropdown sub item 2 </a> </li>
-                <li> <a href="#2"> dropdown sub item 3 </a> </li>
-                <li> <a href="#2"> dropdown sub item 4 </a> </li>
-                <li> <a href="#2"> dropdown sub item 5 </a> </li>
-                <li> <a href="#2"> dropdown sub item 6 </a> </li>
-                <li> <a href="#2"> dropdown sub item 7 </a> </li>
-            </ul>
-        </li>
-        <li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-devices"></i> </span>
-            <span class="dropdown-heading">
+        <!--<li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-windows"></i> </span>-->
+            <!--<span class="dropdown-heading">-->
+ <!--Item three with dropdown </span>-->
+            <!--<ul>-->
+                <!--<li> <a href="#2">dropdown sub item 1 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 2 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 3 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 4 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 5 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 6 </a> </li>-->
+                <!--<li> <a href="#2"> dropdown sub item 7 </a> </li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="has-sub"> <span class="item-icon"> <i class="zmdi zmdi-devices"></i> </span>-->
+            <!--<span class="dropdown-heading">-->
 
- Item four with dropdown </span>
-            <ul>
-                <li> <a href="#2">sub item 1 </a> </li>
-                <li> <a href="#2">sub item 2 </a> </li>
-                <li> <a href="#2">sub item 3 </a> </li>
-                <li> <a href="#2">sub item 4 </a> </li>
-            </ul>
-        </li>
+ <!--Item four with dropdown </span>-->
+            <!--<ul>-->
+                <!--<li> <a href="#2">sub item 1 </a> </li>-->
+                <!--<li> <a href="#2">sub item 2 </a> </li>-->
+                <!--<li> <a href="#2">sub item 3 </a> </li>-->
+                <!--<li> <a href="#2">sub item 4 </a> </li>-->
+            <!--</ul>-->
+        <!--</li>-->
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-keyboard"></i> </span> <a href="#1">
-            Main item four </a></li>
+        <!--<li> <span class="item-icon"> <i class="zmdi zmdi-keyboard"></i> </span> <a href="#1">-->
+            <!--Main item four </a></li>-->
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-dock"></i> </span> <a href="#1">
-            Main item five </a></li>
+        <!--<li> <span class="item-icon"> <i class="zmdi zmdi-dock"></i> </span> <a href="#1">-->
+            <!--Main item five </a></li>-->
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-mouse"></i> </span> <a href="#1">
-            Main item five </a></li>
+        <!--<li> <span class="item-icon"> <i class="zmdi zmdi-mouse"></i> </span> <a href="#1">-->
+            <!--Main item five </a></li>-->
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-tv"></i> </span> <a href="#1">
-            Main item six </a></li>
 
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a onclick="Save()">
+            保存文档</a></li>
+
+        <li> <span class="item-icon"> <i class="zmdi zmdi-close"></i> </span> <a onclick="Logout()">
+            退出登陆</a></li>
     </ul>
 
 </nav>
@@ -137,7 +141,7 @@
 
 <main style="width: 100%;height: auto">
     <div id="test-editormd" >
-                <textarea style="display:none;" th:text="${Mdc.content}">text
+                <textarea style="display:none;"># ==文档怎么没加载出来?_?==
 </textarea>
     </div>
 
@@ -160,6 +164,8 @@
 
 
     var testEditor;
+    var mduid=/*[[${Mdc.uid}]]*/ '-1';
+    var mdtitle=/*[[${Mdc.title}]]*/ '';
     var mdcontent=/*[[${Mdc.content}]]*/ '# Hello World!';
 
     $(function () {
@@ -186,6 +192,31 @@
         */
     });
 </script>
+<script>
+    function Save() {
+        var content=testEditor.getMarkdown();
+        $.ajax({
+        type:"POST",
+        dataType:"json",
+        url:"/savemd",
+        data:{
+            uid:mduid,
+            content:content,
+            title:mdtitle
+        },
+        sucess:function (result) {
+            if(result!=null&&result.res=="ok")
+            {
+                alert(result.res);
+            }
+            else
+            {
+                alert(result.msg);
+            }
+        }
+    });
 
+    }
+</script>
 </body>
 </html>

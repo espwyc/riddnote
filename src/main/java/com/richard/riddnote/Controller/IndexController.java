@@ -28,7 +28,6 @@ public class IndexController {
         //
         // 验证session?
         //
-
         Map<String,String> map= userService.GetUserInfo((String)session.getAttribute("uid"));
 
         modelMap.addAttribute("userinfo",map);

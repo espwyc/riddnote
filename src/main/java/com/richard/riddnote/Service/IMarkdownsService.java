@@ -13,4 +13,6 @@ public interface IMarkdownsService {
     Set<MarkdownBo> GetMdList(UserBo userBo);
 
     MarkdownBo GetMarkdown(String uid);
+
+    void SaveMarkdown(MarkdownBo markdownBo, UserBo userBo);
 }

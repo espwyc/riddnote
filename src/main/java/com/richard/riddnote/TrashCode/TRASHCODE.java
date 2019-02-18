@@ -58,3 +58,29 @@
 //    {
 //        return "home/test";
 //    }
+
+// function Save() {
+//     var uid=/*[[${Mdc.uid}]]*/ '-1';
+//     var title=/*[[${Mdc.title}]]*/ '';
+//     var content =testEditor.getMarkdown();
+//     $.ajax({
+//         type:"POST",
+//         dataType:"json",
+//         url:"/savemd",
+//         data:{
+//             uid:uid,
+//             content:content,
+//             title:title
+//         },
+//         sucess:function (result) {
+//             if(result!=null&&result.res=="ok")
+//             {
+//                 //alert(result.res);
+//             }
+//             else
+//             {
+//                 alert(result.msg);
+//             }
+//         }
+//     });
+//}

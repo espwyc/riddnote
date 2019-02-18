@@ -7,6 +7,7 @@ import com.richard.riddnote.Domain.MdContent;
 import com.richard.riddnote.Domain.User;
 import com.richard.riddnote.Exception.AuthException;
 import com.richard.riddnote.Exception.DataBaseException;
+import com.richard.riddnote.Exception.MarkdownsException;
 import com.richard.riddnote.Model.Bo.MarkdownBo;
 import com.richard.riddnote.Model.Bo.UserBo;
 import com.richard.riddnote.Service.IMarkdownsService;
@@ -88,7 +89,38 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
         markdownBo.setUsernickname(markdown.getOwner().getNickname());
         markdownBo.setTitle(markdown.getTitle());
         markdownBo.setContent(markdown.getContent().getMdcontent());
+        markdownBo.setUid(markdown.getUid());
 
         return  markdownBo;
+    }
+
+    @Override
+    public void SaveMarkdown(MarkdownBo markdownBo, UserBo userBo) {
+
+        if(userBo==null||userBo.getUid()==null)
+        {
+            throw new AuthException("空uservo或uid");
+        }
+
+        User owner =userRepository.findByUid(userBo.getUid());
+        if(owner==null)
+        {
+            throw new DataBaseException("无该条用户数据");
+        }
+
+        Markdown markdown = markdownsRepository.findByUid(markdownBo.getUid());
+        if(markdown.getOwner()!=owner)
+        {
+            throw new MarkdownsException("文档与用户不匹配");
+        }
+
+        MdContent mdContent= markdown.getContent();
+        mdContent.setMdcontent(markdownBo.getContent());
+
+        markdown.setContent(mdContent);
+
+        markdownsRepository.saveAndFlush(markdown);
+
+
     }
 }

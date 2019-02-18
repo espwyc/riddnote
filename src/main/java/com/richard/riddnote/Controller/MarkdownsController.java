@@ -2,6 +2,7 @@ package com.richard.riddnote.Controller;
 
 import com.richard.riddnote.Exception.AuthException;
 import com.richard.riddnote.Exception.DataBaseException;
+import com.richard.riddnote.Exception.MarkdownsException;
 import com.richard.riddnote.Model.Bo.MarkdownBo;
 import com.richard.riddnote.Model.Bo.UserBo;
 import com.richard.riddnote.Model.Dto.MdinfoDto;
@@ -84,5 +85,44 @@ public class MarkdownsController {
         }
 
         return mdinfoDtos;
+    }
+
+    @PostMapping("/savemd")
+    @ResponseBody
+    public Object SaveMd(MarkdownVo markdownVo,HttpServletRequest request)
+    {
+        HttpSession session=request.getSession();
+
+        UserBo userBo= new UserBo();
+        userBo.setUid((String) session.getAttribute("uid"));
+
+        MarkdownBo markdownBo= MarkdownBo.CreatrBoCreteria(markdownVo);
+
+        Map<String,String> map= new HashMap<>();
+        try {
+            markdownsService.SaveMarkdown(markdownBo,userBo);
+
+
+            map.put("res","ok");
+
+            return map;
+        }
+       catch (Exception e)
+       {
+           map.put("res","false");
+           if(e instanceof AuthException)
+           {
+               map.put("msg","用户信息无效");
+           }
+           if(e instanceof DataBaseException)
+           {
+               map.put("msg","无该用户");
+           }
+           if(e instanceof MarkdownsException)
+           {
+               map.put("msg","文档错误");
+           }
+           return map;
+       }
     }
 }

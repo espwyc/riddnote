@@ -18,7 +18,7 @@ public class MdContent implements Serializable {
 
 
     @Lob
-    @Column(columnDefinition = "TEXT",nullable = true)
+    @Column(columnDefinition = "LONGTEXT",nullable = true)
     private String mdcontent;
 
     public Long getId() {

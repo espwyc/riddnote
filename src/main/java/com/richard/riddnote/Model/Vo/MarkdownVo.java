@@ -2,9 +2,12 @@ package com.richard.riddnote.Model.Vo;
 
 public class MarkdownVo {
 
+    private String uid;
+
     private String title;
 
     private String content;
+
 
 
     public String getTitle() {
@@ -21,5 +24,13 @@ public class MarkdownVo {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

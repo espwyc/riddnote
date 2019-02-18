@@ -28,6 +28,7 @@ public class MarkdownBo {
         MarkdownBo markdownBo = new MarkdownBo();
         markdownBo.setTitle(markdownVo.getTitle());
         markdownBo.setContent(markdownVo.getContent());
+        markdownBo.setUid(markdownVo.getUid());
 
         return markdownBo;
     }
