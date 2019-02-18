@@ -16,6 +16,8 @@ public class MdinfoDto {
 
     private String nickname;
 
+    private String uid;
+
 
     static public MdinfoDto CreateDtoCreteria(MarkdownBo markdownBo)
     {
@@ -26,6 +28,7 @@ public class MdinfoDto {
         mdinfoDto.setLastedittime(markdownBo.getLastedittime());
         mdinfoDto.setOpencount(markdownBo.getLastedittime());
         mdinfoDto.setNickname(markdownBo.getUsernickname());
+        mdinfoDto.setUid(markdownBo.getUid());
 
         return mdinfoDto;
     }
@@ -76,5 +79,13 @@ public class MdinfoDto {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

@@ -71,6 +71,7 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
 //            tmp.setLastedittime();
 //            tmp.setOpencount();
 //            tmp.setImgsrc();
+            tmp.setUid(md.getUid());
 
             markdownBos.add(tmp);
         }
