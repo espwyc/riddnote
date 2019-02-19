@@ -81,4 +81,21 @@ public class UserServiceImpl implements IUserService {
         */
         return true;
     }
+
+    @Override
+    public void CreateNewUser(UserBo userBo) {
+
+
+        if(userBo==null||userBo.getNickname()==null||userBo.getUsername()==null||userBo.getNickname()==null)
+        {
+            throw new AuthException("无效用户信息，一项或多项为空");
+        }
+
+        User user= new User();
+        user.setNickname(userBo.getNickname());
+        user.setUname(userBo.getUsername());
+        user.setPwd(userBo.getPassword());
+
+        userRepository.saveAndFlush(user);
+    }
 }

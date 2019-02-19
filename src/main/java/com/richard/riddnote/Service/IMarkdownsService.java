@@ -15,4 +15,6 @@ public interface IMarkdownsService {
     MarkdownBo GetMarkdown(String uid);
 
     void SaveMarkdown(MarkdownBo markdownBo, UserBo userBo);
+
+    void DeleteMarkdown(MarkdownBo markdownBo, UserBo userBo);
 }

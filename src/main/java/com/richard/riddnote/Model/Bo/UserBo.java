@@ -1,10 +1,13 @@
 package com.richard.riddnote.Model.Bo;
 
+import com.richard.riddnote.Model.Vo.UserRegisterVo;
 import com.richard.riddnote.Model.Vo.UserVo;
 
 public class UserBo {
 
     private String uid;
+
+    private String nickname;
 
     private String username;
 
@@ -19,6 +22,17 @@ public class UserBo {
 
         userBo.setUsername(userVo.getUsername());
         userBo.setPassword(userVo.getPassword());
+
+        return userBo;
+    }
+
+    static public UserBo CreateBoCreteria(UserRegisterVo userRegisterVo)
+    {
+        UserBo userBo = new UserBo();
+
+        userBo.setNickname(userRegisterVo.getNickname());
+        userBo.setUsername(userRegisterVo.getUsername());
+        userBo.setPassword(userRegisterVo.getPassword());
 
         return userBo;
     }
@@ -55,4 +69,11 @@ public class UserBo {
         this.valid = valid;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

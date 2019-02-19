@@ -13,5 +13,7 @@ public interface IUserService {
     Map GetUserInfo(String uid);
 
     boolean CheckUserLoginStatus(String uid);
+
+    void CreateNewUser(UserBo userBo);
 }
 

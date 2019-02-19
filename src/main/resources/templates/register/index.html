@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网站开发中，邀请注册</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form">
+        咋这么能呢？这都让你找到了orz<br>
+        网站开发中，邀请注册<br>
+        输入邀请码：<br>
+        <input type="text" name="invicode" id="invicode"><br>
+        输入用户名：<br>
+        <input type="text" name="username" id="username"><br>
+        输入昵称：<br>
+        <input type="text" name="nickname" id="nickname"><br>
+        输入密码：<br>
+        <input type="password" name="password" id="password"><br>
+        确认密码：<br>
+        <input type="password" name="cfpwd" id="cfpwd"><br>
+        <input type="button" value="确定注册" id="button">
+    </form>
+<script type="text/javascript">
+    $('#button').click(function () {
+
+        var fm= document.getElementById("form");
+        var fd = new FormData(fm);
+
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                res = JSON.parse(xmlHttp.responseText);
+                if (res.res == "ok") {
+                    alert("创建成功");
+                    window.location.href="/login";
+                } else {
+                    alert("创建失败:" + res.msg);
+                }
+            }
+            //callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("POST", "/register", true); // true for asynchronous
+        xmlHttp.send(fd);
+    });
+
+</script>
+</body>
+</html>

@@ -28,6 +28,13 @@ public class SessionIntercepter implements HandlerInterceptor {
             //
             return true;
         }
+        if("/register".equals(request.getRequestURI()))
+        {
+            //
+            // 放行"/register"
+            //
+            return true;
+        }
 
         if(request.getSession().getAttribute("uid")==null)
         {

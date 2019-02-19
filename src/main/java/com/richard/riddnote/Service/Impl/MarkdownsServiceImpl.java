@@ -123,4 +123,27 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
 
 
     }
+
+    @Override
+    public void DeleteMarkdown(MarkdownBo markdownBo, UserBo userBo) {
+        if(userBo==null||userBo.getUid()==null)
+        {
+            throw new AuthException("空uservo或uid");
+        }
+
+        User owner =userRepository.findByUid(userBo.getUid());
+        if(owner==null)
+        {
+            throw new DataBaseException("无该条用户数据");
+        }
+
+        Markdown markdown = markdownsRepository.findByUid(markdownBo.getUid());
+        if(markdown.getOwner()!=owner)
+        {
+            throw new MarkdownsException("文档与用户不匹配");
+        }
+
+        markdownsRepository.delete(markdown);
+    }
+
 }

@@ -106,7 +106,11 @@
         <!--<li> <span class="item-icon"> <i class="zmdi zmdi-mouse"></i> </span> <a href="#1">-->
             <!--Main item five </a></li>-->
 
+        <li> <span class="item-icon"> <i class="zmdi zmdi-home"></i> </span> <a href="/home">
+            返回主页</a></li>
 
+        <li> <span class="item-icon"> <i class="zmdi zmdi-delete"></i> </span> <a onclick="Delete()">
+            删除文档</a></li>
 
         <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a onclick="Save()">
             保存文档</a></li>
@@ -132,8 +136,8 @@
             <button class="menu-trigger"> </button>
         </menuitem>
 
-        <menuitem class="logo" title="Your Logo Goes Here">
-            <a href="#1"><img th:src="@{/sidebar/image/jside-menu.png}" alt="jSide Menu" /> </a>
+        <menuitem class="logo" >
+            <a th:text="${Mdc.title}">标题 </a>
         </menuitem>
     </menu>
 
@@ -191,6 +195,33 @@
         });
         */
     });
+</script>
+<script>
+    function Delete() {
+
+        var fd= new FormData();
+        fd.append("uid",mduid);
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                res = JSON.parse(xmlHttp.responseText) ;
+                if(res.res=="ok")
+                {
+                    alert("删除成功");
+                    window.location.href="/home";
+                }
+                else
+                {
+                    alert("保存失败:"+res.msg);
+                }
+            }
+            //callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("DELETE", "/deletemd", true); // true for asynchronous
+        xmlHttp.send(fd);
+    }
 </script>
 <script>
     function Save() {

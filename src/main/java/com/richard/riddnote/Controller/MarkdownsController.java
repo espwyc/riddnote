@@ -10,9 +10,7 @@ import com.richard.riddnote.Model.Vo.MarkdownVo;
 import com.richard.riddnote.Service.IMarkdownsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -124,5 +122,44 @@ public class MarkdownsController {
            }
            return map;
        }
+    }
+
+    @DeleteMapping("/deletemd")
+    @ResponseBody
+    public Object DeleteMd(MarkdownVo markdownVo, HttpServletRequest request)
+    {
+        HttpSession session=request.getSession();
+
+        UserBo userBo= new UserBo();
+        userBo.setUid((String) session.getAttribute("uid"));
+
+        MarkdownBo markdownBo= MarkdownBo.CreatrBoCreteria(markdownVo);
+
+        Map<String,String> map= new HashMap<>();
+        try {
+            markdownsService.DeleteMarkdown(markdownBo,userBo);
+
+            map.put("res","ok");
+
+            return map;
+        }
+        catch (Exception e)
+        {
+            map.put("res","false");
+            if(e instanceof AuthException)
+            {
+                map.put("msg","用户信息无效");
+            }
+            if(e instanceof DataBaseException)
+            {
+                map.put("msg","无该用户");
+            }
+            if(e instanceof MarkdownsException)
+            {
+                map.put("msg","文档错误");
+            }
+            return map;
+        }
+
     }
 }
