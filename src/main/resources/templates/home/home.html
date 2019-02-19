@@ -125,7 +125,7 @@
             <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a  id="reload">
                 刷新列表</a></li>
 
-            <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a onclick="newmd()">
+            <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a id="newmd" >
                 新建markdown</a></li>
 
             <li> <span class="item-icon"> <i class="zmdi zmdi-close"></i> </span> <a href="logout">
@@ -321,36 +321,6 @@
 <!--<link rel="stylesheet" th:href="@{/sidebar/docs/demo-only.css}" />-->
 <script th:src="@{/sidebar/docs/demo-only.js}"></script>
 <!--<script th:src="@{/editor/exp/js/jquery.min.js}"></script>-->
-<script>
-    function newmd() {
-
-        var title= prompt("请输入新文档名","新建markdown");
-
-        var jsonobj = new Object();
-        jsonobj.title=title;
-        jsonobj.mdcontent=null;
-
-
-        $.ajax({
-            type:"POST",
-            dataType:"json",
-            url:"/newmd",
-            data:jsonobj,
-            sucess:function (result) {
-                if(result.resultCode==200)
-                {
-                    alert("创建成功");
-                }
-                else
-                {
-                    alert("新建失败:"+result.msg);
-                }
-            }
-
-        });
-    }
-
-</script>
 
 <!--waterfall script-->
 <script type="text/javascript">
@@ -550,6 +520,11 @@
             xmlHttp.send(null);
         }
 
+        function ClearAndReloadList() {
+            container.empty();
+            ReloadList();
+        }
+
         /*item hover效果*/
         var rbgB=['#71D3F5','#F0C179','#F28386','#8BD38B'];
         $('#waterfull').on('mouseover','.item',function(){
@@ -562,8 +537,37 @@
 
         $('#reload').click(function () {
 
-            container.empty();
-            ReloadList();
+            ClearAndReloadList();
+        });
+
+        $('#newmd').click( function (){
+
+            var title= prompt("请输入新文档名","新建markdown");
+
+            var fd= new FormData();
+            fd.append("title",title);
+            fd.append("mdcontent",null);
+
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                {
+                    res = JSON.parse(xmlHttp.responseText) ;
+                    if(res.res=="ok")
+                    {
+                        alert("创建成功");
+                        ClearAndReloadList();
+                    }
+                    else
+                    {
+                        alert("创建失败:"+res.msg);
+                    }
+                }
+                //callback(xmlHttp.responseText);
+            }
+            xmlHttp.open("POST", "/newmd", true); // true for asynchronous
+            xmlHttp.send(fd);
         });
 
     })

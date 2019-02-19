@@ -111,7 +111,7 @@
         <li> <span class="item-icon"> <i class="zmdi zmdi-file"></i> </span> <a onclick="Save()">
             保存文档</a></li>
 
-        <li> <span class="item-icon"> <i class="zmdi zmdi-close"></i> </span> <a onclick="Logout()">
+        <li> <span class="item-icon"> <i class="zmdi zmdi-close"></i> </span> <a href="/logout">
             退出登陆</a></li>
     </ul>
 
@@ -195,27 +195,49 @@
 <script>
     function Save() {
         var content=testEditor.getMarkdown();
-        $.ajax({
-        type:"POST",
-        dataType:"json",
-        url:"/savemd",
-        data:{
-            uid:mduid,
-            content:content,
-            title:mdtitle
-        },
-        sucess:function (result) {
-            if(result!=null&&result.res=="ok")
-            {
-                alert(result.res);
-            }
-            else
-            {
-                alert(result.msg);
-            }
-        }
-    });
+    //     $.ajax({
+    //     type:"POST",
+    //     dataType:"json",
+    //     url:"/savemd",
+    //     data:{
+    //         uid:mduid,
+    //         content:content,
+    //         title:mdtitle
+    //     },
+    //     sucess:function (result) {
+    //         if(result!=null&&result.res=="ok")
+    //         {
+    //             alert(result.res);
+    //         }
+    //         else
+    //         {
+    //             alert(result.msg);
+    //         }
+    //     }
+    // });
+        var fd= new FormData();
+        fd.append("uid",mduid);
+        fd.append("title",mdtitle);
+        fd.append("content",content);
 
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                res = JSON.parse(xmlHttp.responseText) ;
+                if(res.res=="ok")
+                {
+                    alert("保存成功");
+                }
+                else
+                {
+                    alert("保存失败:"+res.msg);
+                }
+            }
+            //callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("POST", "/savemd", true); // true for asynchronous
+        xmlHttp.send(fd);
     }
 </script>
 </body>
