@@ -5,17 +5,17 @@
 
 登录页面
 
-![1](zReadmeFiles/1.png)
+![1](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/1.png)
 
 主页
 
-![2](zReadmeFiles/2.png)
+![2](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/2.png)
 
 侧边栏
 
-![3](zReadmeFiles/3.png)
+![3](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/3.png)
 
 markdown编辑器
 
-![4](zReadmeFiles/4.png)
+![4](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/4.png)
 
