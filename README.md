@@ -5,19 +5,19 @@
 
 登录页面
 
-![1](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/1.png)
+![1](https://raw.githubusercontent.com/espwyc/riddnote/master/zReadmeFiles/1.png)
 
 主页
 
-![2](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/2.png)
+![2](https://raw.githubusercontent.com/espwyc/riddnote/master/zReadmeFiles/2.png)
 
 侧边栏
 
-![3](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/3.png)
+![3](https://raw.githubusercontent.com/espwyc/riddnote/master/zReadmeFiles/3.png)
 
 markdown编辑器
 
-![4](https://github.com/espwyc/riddnote/blob/master/zReadmeFiles/4.png)
+![4](https://raw.githubusercontent.com/espwyc/riddnote/master/zReadmeFiles/4.png)
 
 ---------
 demo[地址](http://172.96.252.236)
