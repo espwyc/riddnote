@@ -14,6 +14,7 @@ import com.richard.riddnote.Service.IMarkdownsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -69,7 +70,7 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
             tmp.setTitle(md.getTitle());
 //            tmp.setIntro();
             tmp.setUsernickname(user.getNickname());
-//            tmp.setLastedittime();
+            tmp.setLastedittime(md.getContent().getLastmodifiedtime());
 //            tmp.setOpencount();
 //            tmp.setImgsrc();
             tmp.setUid(md.getUid());
@@ -118,6 +119,7 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
         mdContent.setMdcontent(markdownBo.getContent());
 
         markdown.setContent(mdContent);
+        //markdown.setLastmodifiedtime(new Date());
 
         markdownsRepository.saveAndFlush(markdown);
 

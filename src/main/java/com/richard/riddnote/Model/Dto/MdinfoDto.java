@@ -2,6 +2,10 @@ package com.richard.riddnote.Model.Dto;
 
 import com.richard.riddnote.Model.Bo.MarkdownBo;
 
+import java.util.Date;
+
+import static com.sun.tools.javac.util.Constants.format;
+
 public class MdinfoDto {
 
     private String title;
@@ -26,7 +30,7 @@ public class MdinfoDto {
         mdinfoDto.setImgsrc(markdownBo.getImgsrc());
         mdinfoDto.setIntro(markdownBo.getIntro());
         mdinfoDto.setLastedittime(markdownBo.getLastedittime());
-        mdinfoDto.setOpencount(markdownBo.getLastedittime());
+        mdinfoDto.setOpencount(markdownBo.getOpencount());
         mdinfoDto.setNickname(markdownBo.getUsernickname());
         mdinfoDto.setUid(markdownBo.getUid());
 
@@ -57,22 +61,6 @@ public class MdinfoDto {
         this.imgsrc = imgsrc;
     }
 
-    public String getLastedittime() {
-        return lastedittime;
-    }
-
-    public void setLastedittime(String lastedittime) {
-        this.lastedittime = lastedittime;
-    }
-
-    public String getOpencount() {
-        return opencount;
-    }
-
-    public void setOpencount(String opencount) {
-        this.opencount = opencount;
-    }
-
     public String getNickname() {
         return nickname;
     }
@@ -87,5 +75,21 @@ public class MdinfoDto {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getOpencount() {
+        return opencount;
+    }
+
+    public void setOpencount(String opencount) {
+        this.opencount = opencount;
+    }
+
+    public String getLastedittime() {
+        return lastedittime;
+    }
+
+    public void setLastedittime(Date lastedittime) {
+        this.lastedittime = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(lastedittime);
     }
 }

@@ -1,11 +1,16 @@
 package com.richard.riddnote.Domain;
 
 import com.richard.riddnote.Utils.SysUtils;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="t_mdcontent")
 public class MdContent implements Serializable {
 
@@ -20,6 +25,14 @@ public class MdContent implements Serializable {
     @Lob
     @Column(columnDefinition = "LONGTEXT",nullable = true)
     private String mdcontent;
+
+    @CreatedDate
+    @Column
+    private Date createtime;
+
+    @LastModifiedDate
+    @Column
+    private Date lastmodifiedtime;
 
     public Long getId() {
         return id;
@@ -43,5 +56,21 @@ public class MdContent implements Serializable {
 
     public void setMdcontent(String mdcontent) {
         this.mdcontent = mdcontent;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getLastmodifiedtime() {
+        return lastmodifiedtime;
+    }
+
+    public void setLastmodifiedtime(Date lastmodifiedtime) {
+        this.lastmodifiedtime = lastmodifiedtime;
     }
 }

@@ -2,12 +2,17 @@ package com.richard.riddnote.Domain;
 
 
 import com.richard.riddnote.Utils.SysUtils;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="t_markdowns")
 public class Markdown implements Serializable {
 
@@ -28,6 +33,14 @@ public class Markdown implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ownerid",referencedColumnName = "uid")
     private User owner;
+
+    @CreatedDate
+    @Column
+    private Date createtime;
+
+    @LastModifiedDate
+    @Column
+    private Date lastmodifiedtime;
 
     public User getOwner() {
         return owner;
@@ -67,5 +80,21 @@ public class Markdown implements Serializable {
 
     public void setContent(MdContent content) {
         this.content = content;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getLastmodifiedtime() {
+        return lastmodifiedtime;
+    }
+
+    public void setLastmodifiedtime(Date lastmodifiedtime) {
+        this.lastmodifiedtime = lastmodifiedtime;
     }
 }

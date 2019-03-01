@@ -2,6 +2,8 @@ package com.richard.riddnote.Model.Bo;
 
 import com.richard.riddnote.Model.Vo.MarkdownVo;
 
+import java.util.Date;
+
 public class MarkdownBo {
 
     private String uid;
@@ -18,7 +20,7 @@ public class MarkdownBo {
 
     private String imgsrc;
 
-    private String lastedittime;
+    private Date lastedittime;
 
     private String opencount;
 
@@ -90,20 +92,20 @@ public class MarkdownBo {
         this.imgsrc = imgsrc;
     }
 
-    public String getLastedittime() {
-        return lastedittime;
-    }
-
-    public void setLastedittime(String lastedittime) {
-        this.lastedittime = lastedittime;
-    }
-
     public String getOpencount() {
         return opencount;
     }
 
     public void setOpencount(String opencount) {
         this.opencount = opencount;
+    }
+
+    public Date getLastedittime() {
+        return lastedittime;
+    }
+
+    public void setLastedittime(Date lastedittime) {
+        this.lastedittime = lastedittime;
     }
 
     //private String Createtime;

@@ -447,8 +447,9 @@
                     html+="<li onclick='DoEdit(this)' uid='"+sqlJson[i].uid+"' class='item'><a href='#' class='a-img'><img src='"+imgsrc.toString()+"'></a>";
                     html+="<h2 style='color: black' class='li-title'>"+sqlJson[i].title+"</h2>";
                     html+="<p class='description'>"+sqlJson[i].intro+"</p><div class='qianm clearfloat'>";
+                    html+="<span class='sp1'>上次修改<b>"+sqlJson[i].lastedittime+"</b></span>";
                     html+="<span class='sp1'><b>"+sqlJson[i].opencount+"</b>次打开</span>";
-                    html+="<span class='sp2'>"+sqlJson[i].nickname+"</span><span class='sp3'>"+sqlJson[i].date+"&nbsp;By</span></div></li>";
+                    html+="<span class='sp2'>"+sqlJson[i].nickname+"</span><span class='sp3'>创建者</span></div></li>";
                 }
                 /*模拟ajax请求数据时延时800毫秒*/
                 //var time=setTimeout(function(){
