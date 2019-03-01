@@ -42,6 +42,9 @@ public class Markdown implements Serializable {
     @Column
     private Date lastmodifiedtime;
 
+    @Column(nullable = true)
+    private Integer opencount=0;
+
     public User getOwner() {
         return owner;
     }
@@ -96,5 +99,13 @@ public class Markdown implements Serializable {
 
     public void setLastmodifiedtime(Date lastmodifiedtime) {
         this.lastmodifiedtime = lastmodifiedtime;
+    }
+
+    public Integer getOpencount() {
+        return opencount;
+    }
+
+    public void setOpencount(Integer opencount) {
+        this.opencount = opencount;
     }
 }

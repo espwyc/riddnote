@@ -71,7 +71,7 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
 //            tmp.setIntro();
             tmp.setUsernickname(user.getNickname());
             tmp.setLastedittime(md.getContent().getLastmodifiedtime());
-//            tmp.setOpencount();
+            tmp.setOpencount(md.getOpencount().toString());
 //            tmp.setImgsrc();
             tmp.setUid(md.getUid());
 
@@ -91,6 +91,9 @@ public class MarkdownsServiceImpl implements IMarkdownsService {
         markdownBo.setTitle(markdown.getTitle());
         markdownBo.setContent(markdown.getContent().getMdcontent());
         markdownBo.setUid(markdown.getUid());
+
+        markdown.setOpencount(markdown.getOpencount()+1);
+        markdownsRepository.saveAndFlush(markdown);
 
         return  markdownBo;
     }
