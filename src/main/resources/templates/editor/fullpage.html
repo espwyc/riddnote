@@ -271,5 +271,22 @@
         xmlHttp.send(fd);
     }
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        //每60s自动保存一次
+        var t1=window.setInterval(refreshCount, 1000*60);
+        function refreshCount() {
+            var content=testEditor.getMarkdown();
+            var fd= new FormData();
+            fd.append("uid",mduid);
+            fd.append("title",mdtitle);
+            fd.append("content",content);
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("POST", "/savemd", true); // true for asynchronous
+            xmlHttp.send(fd);
+
+        }
+    });
+</script>
 </body>
 </html>
