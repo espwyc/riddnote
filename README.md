@@ -24,11 +24,11 @@ markdown编辑器
 ![4](https://raw.githubusercontent.com/espwyc/riddnote/master/zReadmeFiles/4.png)
 
 ---------
-demo[地址](http://172.96.252.236)
+demo[地址](http://riddnote.yichao.icu)
 
 注：开发中不开放注册，如果有兴趣请向我`索要注册码。`
 
-注册试用[地址](http://172.96.252.236/register)
+注册试用[地址](http://riddnote.yichao.icu/register)
 
 ---------
 ## 开发环境使用
