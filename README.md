@@ -26,7 +26,7 @@ markdown编辑器
 ---------
 demo[地址](http://riddnote.yichao.icu)
 
-注：开发中不开放注册，如果有兴趣请向我`索要注册码。`
+注：开发中不开放注册，如果有兴趣请向我`索要注册码。`或者代码里面可以找到
 
 注册试用[地址](http://riddnote.yichao.icu/register)
 
