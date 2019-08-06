@@ -1,6 +1,8 @@
 # riddnote
 微型在线markdown个人笔记Web App`（开发中）`
 
+demo[地址](http://riddnote.yichao.icu)
+
 该项目为本人学习spring boot练手项目，水平有限。
 
 欢迎fork和pull
